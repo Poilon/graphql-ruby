@@ -13,13 +13,8 @@ module GraphQL
       end
 
       def self.coerce_result(value, ctx)
-        value = value.to_i
-        if value >= MIN && value <= MAX
-          value
-        else
-          err = GraphQL::IntegerEncodingError.new(value)
-          ctx.schema.type_error(err, ctx)
-        end
+        value.to_i
+        # yes
       end
 
       default_scalar true
